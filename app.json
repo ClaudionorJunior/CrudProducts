@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "CrudProducts",
+    "slug": "CrudProducts",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
