@@ -1,0 +1,16 @@
+export const palletColors = {
+  primary: '#5185C1',
+  primary1: '#5185C1',
+  primary2: '#084B99',
+  secondary1: '#FFC359',
+  secondary2: '#E6A739',
+  secondary3: '#996A17',
+  borderColor: '#9ea3a1',
+  neutral: '#9ea3a1',
+  textColor: '#403E3E',
+  warning: '#FFAE40',
+  danger: '#CC1F1F',
+  success: '#60AE31',
+  backgroudColor: '#E5E5E5',
+  white: '#fff',
+};
