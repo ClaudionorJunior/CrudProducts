@@ -1,14 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import {
   Roboto_400Regular,
   Roboto_500Medium,
   Roboto_700Bold,
   useFonts,
 } from '@expo-google-fonts/roboto';
+import { NavigationContainer } from '@react-navigation/native';
 import ContextProvider from '~/hooks/ContextProvider';
 import { LoadingScreen } from '~/components/LoadingScreen';
+import MainStack from '~/navigations';
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -21,22 +21,12 @@ const App = () => {
     return <LoadingScreen />;
   }
   return (
-    <ContextProvider>
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
-    </ContextProvider>
+    <NavigationContainer>
+      <ContextProvider>
+        <MainStack />
+      </ContextProvider>
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default App;
