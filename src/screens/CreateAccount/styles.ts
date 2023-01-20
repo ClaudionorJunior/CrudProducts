@@ -14,16 +14,14 @@ export const ContainerInputs = styled.View`
   width: 100%;
 `;
 
-export const ContainerCreateAccount = styled.View`
-  width: 100%;
+export const GoBackContainer = styled.View`
+  position: absolute;
+  top: ${normalizePixel(40)}px;
+  left: ${normalizePixel(24)}px;
+  border-radius: ${normalizePixel(20)}px;
   justify-content: center;
   align-items: center;
-  margin-bottom: ${normalizePixel(24)}px;
+  background-color: ${({ theme }) => theme.colors.primary};
 `;
 
-export const CreateAccountButton = styled.TouchableOpacity``;
-
-export const CreateAccountLabel = styled.Text`
-  ${({ theme }) => theme.fonts.medium(16, 24, 'primary')}
-  color: ${({ theme }) => theme.colors.primary};
-`;
+export const GoBackButton = styled.TouchableWithoutFeedback``;

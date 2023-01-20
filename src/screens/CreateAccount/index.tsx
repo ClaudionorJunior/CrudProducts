@@ -3,15 +3,16 @@ import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from 'react-native';
 import * as Yup from 'yup';
+import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import CustomInput from '~/elements/CustomInput';
 import {
   Container,
   ContainerInputs,
-  ContainerCreateAccount,
-  CreateAccountButton,
-  CreateAccountLabel,
+  GoBackContainer,
+  GoBackButton,
 } from './styles';
-import useAppNavigation from '~/hooks/useAppNavigation';
+import { normalizePixel } from '~/utils/normalizePixel';
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -24,20 +25,25 @@ const schema = Yup.object().shape({
     .trim(),
 });
 
-const Login = () => {
+const CreateAccount = () => {
   const formProps = useForm({ resolver: yupResolver(schema) });
-  const { navigate } = useAppNavigation();
+  const navigation = useNavigation();
 
-  const handleCreateAccount = useCallback(() => {
-    navigate({ screen: 'CreateAccount' });
+  const handleBackPress = useCallback(() => {
+    navigation.goBack();
   }, []);
 
-  const handleLogin = useCallback((values: FieldValues) => {
-    // logar
+  const handleCreateAccount = useCallback((values: FieldValues) => {
+    // criar conta
   }, []);
 
   return (
     <Container>
+      <GoBackContainer>
+        <GoBackButton onPress={handleBackPress}>
+          <Feather name="chevron-left" size={normalizePixel(40)} />
+        </GoBackButton>
+      </GoBackContainer>
       <ContainerInputs>
         <FormProvider {...formProps}>
           <CustomInput label="Email" placeholder="Email" name="email" />
@@ -49,17 +55,12 @@ const Login = () => {
           />
         </FormProvider>
       </ContainerInputs>
-      <ContainerCreateAccount>
-        <CreateAccountButton onPress={handleCreateAccount}>
-          <CreateAccountLabel>Criar conta</CreateAccountLabel>
-        </CreateAccountButton>
-      </ContainerCreateAccount>
       <Button
-        title="Fazer login"
-        onPress={formProps.handleSubmit(handleLogin)}
+        title="Criar sua conta"
+        onPress={formProps.handleSubmit(handleCreateAccount)}
       />
     </Container>
   );
 };
 
-export default Login;
+export default CreateAccount;

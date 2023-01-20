@@ -1,4 +1,37 @@
-export const palletColors = {
+import { css } from 'styled-components/native';
+
+export type Colors = typeof colors;
+export type GlobalStyles = typeof globalStyles;
+export type mapColors = keyof Colors;
+
+const fonts = {
+  regular: (size: number, lineHeight: number, colors: mapColors) => {
+    return css`
+      font-family: 'Roboto_400Regular';
+      font-size: ${size}px;
+      line-height: ${lineHeight}px;
+      color: ${colors};
+    `;
+  },
+  medium: (size: number, lineHeight: number, colors: mapColors) => {
+    return css`
+      font-family: 'Roboto_500Medium';
+      font-size: ${size}px;
+      line-height: ${lineHeight}px;
+      color: ${colors};
+    `;
+  },
+  bold: (size: number, lineHeight: number, colors: mapColors) => {
+    return css`
+      font-family: 'Roboto_700Bold';
+      font-size: ${size}px;
+      line-height: ${lineHeight}px;
+      color: ${colors};
+    `;
+  },
+};
+
+const colors = {
   primary: '#5185C1',
   primary1: '#5185C1',
   primary2: '#084B99',
@@ -14,3 +47,10 @@ export const palletColors = {
   backgroudColor: '#E5E5E5',
   white: '#fff',
 };
+
+const globalStyles = {
+  colors,
+  fonts,
+};
+
+export default globalStyles;
